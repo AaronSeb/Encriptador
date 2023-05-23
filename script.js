@@ -1,38 +1,13 @@
 let btnEncriptar = document.getElementById("btnEncriptar");
 let btnDesencriptar = document.getElementById("btnDesencriptar");
+let btncopiar = document.getElementById("copy");
 
 var textArea = document.getElementById("textArea")
 var textArea2 = document.getElementById("encriptadoArea");
+var prueba = document.getElementById("prueba");
 
 
-
-
-
-
-//Botón de encriptar
-btnEncriptar.addEventListener('click',()=>{
-    encriptar();
-})
-
-
-//Botón de desencriptar
-btnDesencriptar.addEventListener('click',()=>{
-    desencriptar();
-})
-
-
-
-//PRESIONANDO TECLA ENTER
-textArea.addEventListener("keyup",function(e){
-    
-    if(e.key==='Enter' && !e.shiftKey){
-        encriptar();
-        textArea2.style.backgroundImage = "url('img/Muñeco.png')";
-    }/* else {
-        textArea2.style.backgroundImage = "url('img/Muñeco.png')";
-    } */
-})
-
+//-------------------------------------FUNCIONES------------------------------------------
 
 //FUNCIÓN ENCRIPTAR 
 function encriptar(){
@@ -52,8 +27,9 @@ function encriptar(){
     } 
     //textArea2.style.backgroundImage = "url('img/Muñeco.png')";
     
-
+    
 }
+
 //FUNCIÓN DESENCRIPTAR 
 function desencriptar(){
     let textCapturado = textArea.value.toLowerCase();
@@ -71,3 +47,72 @@ function desencriptar(){
         textArea2.style.backgroundImage = "url('img/Muñeco.png')";
     }
 }
+
+//FUNCIÓN COPIAR
+function copiar(){
+    textArea2.select();
+    document.execCommand("copy");
+    textArea2.value = ""; 
+}
+
+
+//FUNCIÓN DETECTAR MAYUSCULAS
+
+
+/* function detectMayus(valor){
+
+    prueba.innerHTML = valor;
+    if(prueba.value === prueba.value.toUpperCase()){
+        console.log("texto con mayuscula")
+    } 
+} esto va en el textArea1 onkeyup="detectMayus(this.value)"*/
+
+
+//------------------EVENTOS------------------------------------------
+
+//Botón de encriptar
+btnEncriptar.addEventListener('click',()=>{
+    encriptar();
+})
+
+
+//Botón de desencriptar
+btnDesencriptar.addEventListener('click',()=>{
+    desencriptar();
+})
+
+
+//Botón copiar
+btncopiar.addEventListener('click',copiar);
+
+
+//PRESIONANDO TECLA ENTER
+function teclaEnter(e){
+    if(e.key==='Enter' && !e.shiftKey){
+        encriptar();
+    }else {
+        //textArea2.style.backgroundImage = "url('img/Muñeco.png')";
+    } 
+}
+
+textArea.addEventListener("keyup",teclaEnter);
+
+
+
+
+textArea.addEventListener('input', function(){
+    var tex = textArea.value;
+    var caracter = tex.charAt(tex.length-1);
+    const noNumeros = /\d/.test(caracter)
+
+    if(caracter==" "){
+        console.log("vacio");
+    }
+
+    if(caracter===caracter.toUpperCase()  && caracter != " " && !noNumeros){
+        console.log("ES MAYUSCULA");
+    }else {
+        "todo esta vacio"
+    }  
+    
+});
