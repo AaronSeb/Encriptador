@@ -4,7 +4,8 @@ let btncopiar = document.getElementById("copy");
 
 var textArea = document.getElementById("textArea")
 var textArea2 = document.getElementById("encriptadoArea");
-var prueba = document.getElementById("prueba");
+var aviso = document.getElementById("aviso");
+
 
 
 //-------------------------------------FUNCIONES------------------------------------------
@@ -97,22 +98,21 @@ function teclaEnter(e){
 
 textArea.addEventListener("keyup",teclaEnter);
 
-
-
+//EVENTO PARA DETECTAR MAYÚSCULAS
 
 textArea.addEventListener('input', function(){
     var tex = textArea.value;
-    var caracter = tex.charAt(tex.length-1);
-    const noNumeros = /\d/.test(caracter)
 
-    if(caracter==" "){
-        console.log("vacio");
-    }
+    if(/[A-Z]/.test(tex)){
+        textArea.classList.add("uppercase");
+        setTimeout(function(){
+            textArea.classList.remove("uppercase");
+        },500);
 
-    if(caracter===caracter.toUpperCase()  && caracter != " " && !noNumeros){
-        console.log("ES MAYUSCULA");
-    }else {
-        "todo esta vacio"
-    }  
-    
+        aviso.classList.add("aviso");
+        setTimeout(function(){
+            aviso.classList.remove("aviso");
+        },500);
+
+    }    
 });
