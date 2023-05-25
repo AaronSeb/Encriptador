@@ -1,9 +1,16 @@
 * {
-    background: #F3F5FC;
+    /* background: #F3F5FC; */
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 400;
     font-size: 32px;
     line-height: 150%;
+}
+
+body{
+    background-image: url("img/bk2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    
 }
 
 header {
@@ -19,13 +26,14 @@ main {
 }
 
 .areaTexto {
+    
     border: none;
     border-radius: 24px;
-    background-color: #d8dfe8;
+    background-color: #C6C5CA;
     color: #0A3871;
     margin-top: 90;
     resize: none;
-    text-indent: 10px;
+    padding:0px 20px;
     transition: background-color 0.3s ease;
 
     /* text-transform: lowercase; */
@@ -37,15 +45,16 @@ main {
 }
 
 .caviso {
-    color: #0A3871;
+    color: white;
     font-size: 25px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
 } 
 
 .aviso {
     color: #a82b33;
-    /* font-size: 32px; */
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
     transition: 0.3s ease-in;
-    transform: scale(0.9);
+    transform: scale(103%);
     
 }
 .imga{
@@ -62,12 +71,13 @@ main {
 .botones {
     display: flex;
     justify-content: center;
-    gap: 4px;
+    gap: 10px;
     
 }
 .btn-encriptar {
-    background-color: #0A3871;
+    background-color: #004EAB;
     border: 1px solid #0A3871;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     border-radius: 24px;
     color: white;
     cursor: pointer;
@@ -75,27 +85,40 @@ main {
     width: 228px;
     
 }
+
+.btn-encriptar:hover{
+    background-color:#033b80 ;
+    scale: 103%;
+    transition: 1s;
+}
 .btn-desencriptar {
-    background-color: #d8dfe8;
-    border: 1px solid #0A3871;
+    background-color: #00B3FE;
+    border: 1px solid #00B3FE;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     border-radius: 24px;
-    color: #0A3871;
+    color: white;
     cursor: pointer;
     height: 67px;
     
     width: 228px;
 }
 
+.btn-desencriptar:hover{
+    background-color:#119fdb ;
+    scale: 103%;
+    transition: 1s;
+}
 
 .areaEncriptado {
 
     background: white;
-    background-image: url("img/Muñeco.png");
+    background-image: url("img/buscar.png");
     background-repeat: no-repeat;
+    background-size: contain;
     border: none;
     border-radius: 24px;
     color: #0A3871;
-    
+    padding:0px 20px;
     position: flex;
     resize: none;
 }
@@ -107,10 +130,11 @@ main {
     justify-content: center;
 }
 .btn-copiar{
-    
-    border: 1px solid #0A3871;
+    background-color: #787680;
+    border: 1px solid #787680;
     border-radius: 24px;
-    color: #0A3871;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    color: white;
     cursor: pointer;
     height: 67px;
     /* margin-left: 60px; */
@@ -118,14 +142,60 @@ main {
     /* position: flex; */
     width: 228px;
 }
+
+.btn-copiar:hover{
+    background-color:#606064 ;
+    scale: 103%;
+    transition: 1s;
+}
+
+
 /* MEDIAS QUERY */
+
 @media(max-width:982px){
+    main {
+        justify-content: center;
+        flex-direction: row;
+        margin-bottom: 20px;
+    }
+    .areaTexto {
+        width: 100%;
+        max-width: 355px;
+        box-sizing: border-box;
+    }
+    .botones {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 20px;
+        
+    }
+    .btn-encriptar {
+        width: 160px;
+        font-size: 30px;
+    }
+    .btn-desencriptar {
+        width: 180px;
+        font-size: 30px;
+    }
+    .btn-copiar {
+        width: 180px;
+        font-size: 30px;
+    }
+}
+
+@media(max-width:700px){
     main {
         justify-content: center;
         flex-direction: column;
         margin-bottom: 20px;
     }
     .areaTexto {
+        width: 100%;
+        max-width: 355px;
+        box-sizing: border-box;
+    }
+    .areaEncriptado{
         width: 100%;
         max-width: 355px;
         box-sizing: border-box;
@@ -138,6 +208,7 @@ main {
     }
     .btn-encriptar {
         margin: auto;
+        width: 180px;
     }
     .btn-desencriptar {
         margin: auto;

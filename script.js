@@ -24,11 +24,8 @@ function encriptar(){
     if(textArea2.value != ""){
         textArea2.style.backgroundImage = "none";
     }else{
-        textArea2.style.backgroundImage = "url('img/Muñeco.png')";
+        textArea2.style.backgroundImage = "url('img/buscar.png')";
     } 
-    //textArea2.style.backgroundImage = "url('img/Muñeco.png')";
-    
-    
 }
 
 //FUNCIÓN DESENCRIPTAR 
@@ -45,7 +42,7 @@ function desencriptar(){
     if(textArea2.value != ""){
         textArea2.style.backgroundImage = "none";
     }else{
-        textArea2.style.backgroundImage = "url('img/Muñeco.png')";
+        textArea2.style.backgroundImage = "url('img/buscar.png')";
     }
 }
 
@@ -57,7 +54,7 @@ function copiar(){
 }
 
 
-//FUNCIÓN DETECTAR MAYUSCULAS
+//FUNCIÓN DETECTAR MAYUSCULAS(solo se usó como prueba)
 
 
 /* function detectMayus(valor){
@@ -83,27 +80,25 @@ btnDesencriptar.addEventListener('click',()=>{
 })
 
 
-//Botón copiar
+//Botón copiar -- le paso la función copiar
 btncopiar.addEventListener('click',copiar);
 
 
-//PRESIONANDO TECLA ENTER
+//función presionando tecla enter para encriptar
 function teclaEnter(e){
     if(e.key==='Enter' && !e.shiftKey){
         encriptar();
-    }else {
-        //textArea2.style.backgroundImage = "url('img/Muñeco.png')";
-    } 
+    }
 }
-
+//evento presionando tecla enter
 textArea.addEventListener("keyup",teclaEnter);
 
-//EVENTO PARA DETECTAR MAYÚSCULAS
+//EVENTO PARA DETECTAR MAYÚSCULAS Y NÚMEROS
 
 textArea.addEventListener('input', function(){
     var tex = textArea.value;
 
-    if(/[A-Z]/.test(tex)){
+    if(/[A-Z]/.test(tex)|| /[0-9]/.test(tex)){
         textArea.classList.add("uppercase");
         setTimeout(function(){
             textArea.classList.remove("uppercase");
