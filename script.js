@@ -67,16 +67,26 @@ function copiar(){
 
 
 //------------------EVENTOS------------------------------------------
-
+var encript = false
 //Botón de encriptar
 btnEncriptar.addEventListener('click',()=>{
-    encriptar();
+    if(/[A-Z]/.test(textArea.value)|| /[0-9]/.test(textArea.value) || /[áéíóúÁÉÍÓÚ]/.test(textArea.value)){
+        textArea2.style.backgroundImage = "none";
+        textArea2.value = "Su texto contiene mayúsculas, números o tildes ";
+    }else {
+        encriptar();
+        encript=true
+    }
+    
 })
 
 
 //Botón de desencriptar
 btnDesencriptar.addEventListener('click',()=>{
-    desencriptar();
+    if(encript){
+        desencriptar();
+    }
+    
 })
 
 
@@ -98,7 +108,7 @@ textArea.addEventListener("keyup",teclaEnter);
 textArea.addEventListener('input', function(){
     var tex = textArea.value;
 
-    if(/[A-Z]/.test(tex)|| /[0-9]/.test(tex)){
+    if(/[A-Z]/.test(tex)|| /[0-9]/.test(tex) || /[áéíóúÁÉÍÓÚ]/.test(tex)){
         textArea.classList.add("uppercase");
         setTimeout(function(){
             textArea.classList.remove("uppercase");
